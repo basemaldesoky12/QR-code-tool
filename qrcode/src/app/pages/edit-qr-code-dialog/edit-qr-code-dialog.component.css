@@ -1,0 +1,42 @@
+/* .dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Optionally, if you want the MatDialog to take up the entire available height */
+/* }
+
+.content {
+    text-align: center; /* Center the content horizontally */
+    /* flex-direction: column;
+    row-gap: 2rem; */
+/* }
+.label{
+    font-size: large;
+
+}
+.close{
+    float: right;
+} */ 
+.container {
+    margin-top: 100px;
+}
+.qr-form {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-generate {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.btn-generate:hover {
+    background-color: #0056b3;
+}
+button{
+    margin-left: 25px;
+}
+.close{
+    float: right;
+} 

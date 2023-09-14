@@ -1,0 +1,15 @@
+<div class="sidebar">
+    <a href="#">My QR Codes</a>
+    <!-- Add more navigation links if needed -->
+</div>
+<div class="content">
+    <div class="qr-code " *ngFor="let qrcode of QRCodes">
+        <h2 class="">{{qrcode.qrName}}</h2>
+        <img [src]="qrcode.qrPath" class="img" alt="My QR Code">
+        <div class="box">
+            <button class="btn btn-primary" (click)="openEditDialog(qrcode.id)"> edit</button>
+            <button (click)="getDeatils(qrcode.id)"> Get Details</button>
+        </div>
+       
+    </div>
+</div>

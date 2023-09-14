@@ -1,0 +1,29 @@
+<!-- <button type="button" class="close m-2" (click)="closeDialog()">&times;</button>
+<div class="dialog-container p-2">
+    <div class="content">
+        <form action="">
+            <div class="form-group">
+            <label for="" class="label">New Name</label>
+            <input type="text" class="form-control m-3">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div> -->
+<button type="button" class="close m-2" (click)="closeDialog()">&times;</button>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="qr-form">
+                <h2 class="text-center mb-4">Edit QR Code Name</h2>
+                <form [formGroup]="editForm" (ngSubmit)="submit()" id="qr-form" >
+                    <div class="form-group p-3">
+                        <input type="text" formControlName="QRName" class="form-control" id="qr-text" placeholder="Enter Name">
+                    </div>
+                    <button  type="submit" class="btn btn-primary btn-block btn-generate mt-2" id="generate-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
