@@ -47,14 +47,14 @@
                         <div *ngIf="signupForm.get('ConfirmPassword')?.invalid && signupForm.get('ConfirmPassword')?.touched" class="text-danger">
                             Confirm Password is required.
                           </div>
-                          <div *ngIf="signupForm.hasError('passwordMismatch') && signupForm.get('ConfirmPassword')?.touched" class="text-danger">
+                          <div *ngIf="signupForm.errors?.['passwordMatchError']" class="text-danger">
                             Passwords do not match.
                           </div>
                         
                       </div>
   
                     <div class="text-center pt-1 mb-5 pb-1  box">
-                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit"> Sign Up </button>
+                      <button [disabled]="signupForm.invalid" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit"> Sign Up </button>
                       
                     </div>
   
