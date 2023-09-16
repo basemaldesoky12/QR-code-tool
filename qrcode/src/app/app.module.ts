@@ -17,7 +17,8 @@ import {MatDialogModule} from '@angular/material/dialog'
 import {MatInputModule} from '@angular/material/input'
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {FormsModule} from '@angular/forms';
-import { EditQrCodeDialogComponent } from './pages/edit-qr-code-dialog/edit-qr-code-dialog.component'
+import { EditQrCodeDialogComponent } from './pages/edit-qr-code-dialog/edit-qr-code-dialog.component';
+import { DeleteDialogComponent } from './pages/delete-dialog/delete-dialog.component'
 // import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
@@ -27,7 +28,8 @@ import { EditQrCodeDialogComponent } from './pages/edit-qr-code-dialog/edit-qr-c
     MyQrCodeComponent,
     UserDataComponent,
     QrCodeDetailsComponent,
-    EditQrCodeDialogComponent
+    EditQrCodeDialogComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,

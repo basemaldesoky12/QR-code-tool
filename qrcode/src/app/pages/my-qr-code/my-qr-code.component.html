@@ -1,6 +1,9 @@
-<div class="sidebar">
+<div class="sidebar d-flex flex-column ">
     <a href="#">My QR Codes</a>
-    <!-- Add more navigation links if needed -->
+    <a class="logout" (click)="logout()"> Logout</a>
+</div>
+<div class="d-flex justify-content-end m-4">
+    <a routerLink="/generationform" class="btn btn-primary"> Generate New QR CODE</a>
 </div>
 <div class="content">
     <div class="qr-code " *ngFor="let qrcode of QRCodes">
@@ -8,7 +11,8 @@
         <img [src]="qrcode.qrPath" class="img" alt="My QR Code">
         <div class="box">
             <button class="btn btn-primary" (click)="openEditDialog(qrcode.id)"> edit</button>
-            <button (click)="getDeatils(qrcode.id)"> Get Details</button>
+            <button class="btn btn-danger" (click)="openDeleteDialog(qrcode.id)"> Delete</button>
+            <button (click)="getDeatils(qrcode.id)" class="btn btn-secondary"> Get Details</button>
         </div>
        
     </div>

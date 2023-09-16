@@ -7,10 +7,24 @@
                     <div class="form-group p-3">
                         <label for="qr-text" class="p-2">Enter URL</label>
                         <input type="text" formControlName="URLValue" class="form-control" id="qr-text" placeholder="Enter the URL">
+                        <div *ngIf="qrCodeForm.get('URLValue')?.hasError('pattern')" class="text-danger">
+                            Invalid URL format. Please enter a valid URL.
+                          </div>
+                          <!-- Show validation error message if URL is required -->
+                          <div *ngIf="qrCodeForm.get('URLValue')?.hasError('required')" class="text-danger">
+                            URL is required.
+                          </div>
                     </div>
                     <div class="form-group p-3">
                         <label for="qr-text" class="">Enter Name</label>
                         <input type="text" formControlName="QRName" class="form-control" id="qr-text" placeholder="Enter Name">
+                        <div *ngIf="qrCodeForm.get('QRName')?.hasError('required')" class="text-danger">
+                            Name is required.
+                          </div>
+                          <!-- Show validation error message if QRName is less than 3 characters -->
+                          <div *ngIf="qrCodeForm.get('QRName')?.hasError('minlength')" class="text-danger">
+                            Name must be at least 3 characters long.
+                          </div>
                     </div>
                     <button  type="submit" class="btn btn-primary btn-block btn-generate mt-2" id="generate-btn">Generate QR Code</button>
                 </form>

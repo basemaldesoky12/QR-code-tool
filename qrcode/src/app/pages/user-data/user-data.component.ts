@@ -34,7 +34,7 @@ export class UserDataComponent implements OnInit {
      this.qrcodeService.getUserCountry().subscribe((data:any)=>{
       this.userCountry=data
       console.log(this.userCountry.country)
-      this.qrcodeService.scanQR(this.userCountry.country,this.deviceType,5,this.browserInfo).subscribe(res=>{
+      this.qrcodeService.scanQR(this.userCountry.country,this.deviceType,5,this.browserInfo, this.hashValue).subscribe(res=>{
         console.log(res)
        },err=>{
         console.log(err)

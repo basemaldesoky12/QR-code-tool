@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { CreateQrCodeService } from 'src/app/services/create-qr-code.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditQrCodeDialogComponent } from '../edit-qr-code-dialog/edit-qr-code-dialog.component';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-my-qr-code',
@@ -11,7 +13,7 @@ import { EditQrCodeDialogComponent } from '../edit-qr-code-dialog/edit-qr-code-d
 })
 export class MyQrCodeComponent implements OnInit {
   QRCodes : any
- constructor(private qrcodeService : CreateQrCodeService,private route : Router,public dialog : MatDialog){}
+ constructor(private qrcodeService : CreateQrCodeService,private route : Router,public dialog : MatDialog, private authService : AuthService){}
   ngOnInit(): void {
 
     this.qrcodeService.getAllQrCodes().subscribe(res=>{
@@ -37,5 +39,25 @@ export class MyQrCodeComponent implements OnInit {
   this.dialog.afterAllClosed.subscribe(()=>{
     this.ngOnInit()
   })
+ }
+ openDeleteDialog(id : any)
+ {
+  const dialogConfig= new MatDialogConfig();
+  dialogConfig.disableClose=true;
+  dialogConfig.width="50%";
+  dialogConfig.height="50%";
+  dialogConfig.data ={id : id}
+  this.dialog.open(DeleteDialogComponent,dialogConfig)
+  this.dialog.afterAllClosed.subscribe(()=>{
+    this.ngOnInit()
+  })
+ }
+ logout()
+ {
+   this.authService.logout()
+   if(this.authService.loggedIn()==false)
+   {
+    this.route.navigate([''])
+   }
  }
 }

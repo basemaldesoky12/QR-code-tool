@@ -1,0 +1,15 @@
+.close{
+    float: right;
+} 
+.container {
+    margin-top: 100px;
+}
+.content{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.box{
+    column-gap: 2rem;
+}

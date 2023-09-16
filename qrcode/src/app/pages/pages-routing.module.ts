@@ -5,13 +5,14 @@ import { FormInputPageComponent } from './form-input-page/form-input-page.compon
 import { MyQrCodeComponent } from './my-qr-code/my-qr-code.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { QrCodeDetailsComponent } from './qr-code-details/qr-code-details.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const pagesRoutes : Routes = [
 {path : '', component : HomeComponent},
-{path : 'generationform' , component: FormInputPageComponent},
-{path : 'myqrcodes', component : MyQrCodeComponent},
-{path : 'hash/:hash',component : UserDataComponent},
-{path : 'qrcodedetails/:id', component : QrCodeDetailsComponent}
+{path : 'generationform' , component: FormInputPageComponent, canActivate :[AuthGuard]},
+{path : 'myqrcodes', component : MyQrCodeComponent, canActivate :[AuthGuard]},
+{path : ':hash',component : UserDataComponent},
+{path : 'qrcodedetails/:id', component : QrCodeDetailsComponent, canActivate :[AuthGuard]}
 ]
 
 @NgModule({

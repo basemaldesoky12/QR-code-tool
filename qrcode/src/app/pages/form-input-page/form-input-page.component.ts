@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CreateQrCodeService } from 'src/app/services/create-qr-code.service';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
+import jwtDecode from 'jwt-decode';
 @Component({
   selector: 'app-form-input-page',
   templateUrl: './form-input-page.component.html',
@@ -10,21 +11,32 @@ import { CreateQrCodeService } from 'src/app/services/create-qr-code.service';
 })
 export class FormInputPageComponent implements OnInit {
  qrCodeForm !: FormGroup
+ helper = new JwtHelperService();
   constructor(private route :Router, 
     private fb : FormBuilder,
     private createQR : CreateQrCodeService
     ){
-       this.qrCodeForm= this.fb.group({
-        URLValue : new FormControl(''),
-        QRName : new FormControl('')
-      })
+      this.qrCodeForm = this.fb.group({
+        URLValue: ['', [
+          Validators.required, // Required validation
+          Validators.pattern('^(https?|ftp)://[\\w\\.-]+\\.[a-zA-Z]{2,4}(:\\d+)?(/\\S*)?$') // URL pattern validation
+        ]],
+        QRName: ['',[Validators.required, Validators.minLength(3)]]
+      });
     }
   ngOnInit(): void {
   }
   generate()
 {
-  console.log(this.qrCodeForm.value)
-  this.createQR.createQrCode(this.qrCodeForm.value).subscribe(res=>{
+  let token = localStorage.getItem('token')!
+  const decodedToken: any = jwtDecode(token);
+  const userId= decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
+  // let property = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+  console.log(userId)
+  console.log(decodedToken)
+  // console.log(property)
+  // console.log(this.qrCodeForm.value)
+  this.createQR.createQrCode(this.qrCodeForm.value,token, userId).subscribe(res=>{
     console.log(res)
     console.log('gkgkgk')
    this.route.navigate(['myqrcodes'])

@@ -1,7 +1,7 @@
 
         .sidebar {
             height: 100%;
-            width: 250px;
+            width: 20%;
             position: fixed;
             top: 0;
             left: 0;
@@ -15,6 +15,9 @@
             color: #ffffff;
             display: block;
             transition: background-color 0.3s ease;
+        }
+        .logout{
+           align-items: end;
         }
         .sidebar a:hover {
             background-color: #007bff;
@@ -39,5 +42,6 @@
         }
         .box{
             float: right;
-            column-gap: 2rem;
+            display: flex;
+            column-gap: 15px;
         }
