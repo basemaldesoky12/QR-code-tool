@@ -10,7 +10,7 @@
         <h2 class="">{{qrcode.qrName}}</h2>
         <img [src]="qrcode.qrPath" class="img" alt="My QR Code">
         <div>
-        <button class="btn btn-primary" routerLink="/928141a1-c649-496a-b265-56342d4f3128"> Scan</button>
+        <button class="btn btn-primary" (click)="routeToHash(qrcode.hashValue)"> Scan</button>
         </div>
         <div class="box">
             <button class="btn btn-primary" (click)="openEditDialog(qrcode.id)"> edit</button>

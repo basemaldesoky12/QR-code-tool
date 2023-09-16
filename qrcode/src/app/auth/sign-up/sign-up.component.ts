@@ -11,6 +11,8 @@ import { matchPassword } from './matchpassword.validator';
 export class SignUpComponent implements OnInit {
   signupForm! : FormGroup
   errorMessage: string = '';
+  errorUser : string =''
+  errorUserBoolean : boolean = false
  constructor( private fb :FormBuilder, 
   private route : Router,
   private authService : AuthService){
@@ -42,6 +44,16 @@ export class SignUpComponent implements OnInit {
         console.log(res)
         this.route.navigate(['auth','login'])
       },err=>{
+        if(err.error=='This UserName is already exists')
+        {
+          this.errorUserBoolean = true
+           this.errorUser='username already exists'
+        }
+        if(err.error=='This Email is already exists')
+        {
+          this.errorUserBoolean = true
+           this.errorUser='Email already exists'
+        }
         console.log(err)
       })
     }else{

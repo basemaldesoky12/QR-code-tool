@@ -52,13 +52,15 @@
                           </div>
                         
                       </div>
-  
+                      <div *ngIf="errorMessage" class="text-danger mb-3">{{ errorMessage }}</div>
+                      <div *ngIf="errorUserBoolean" class="text-danger mb-3">{{errorUser}}</div>
                     <div class="text-center pt-1 mb-5 pb-1  box">
+
                       <button id="button" [disabled]="signupForm.invalid" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit"> Sign Up </button>
                       
                     </div>
   
-                    <div *ngIf="errorMessage" class="text-danger mb-3">{{ errorMessage }}</div>
+                   
 
   
                   </form>

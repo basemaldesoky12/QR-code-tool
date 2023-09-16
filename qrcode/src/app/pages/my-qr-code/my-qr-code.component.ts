@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MyQrCodeComponent implements OnInit {
   QRCodes : any
+  hashValue : any
  constructor(private qrcodeService : CreateQrCodeService,private route : Router,public dialog : MatDialog, private authService : AuthService){}
   ngOnInit(): void {
 
@@ -59,5 +60,9 @@ export class MyQrCodeComponent implements OnInit {
    {
     this.route.navigate([''])
    }
+ }
+ routeToHash(hashValue:any)
+ {
+  this.route.navigate([`/${hashValue}`])
  }
 }
