@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CreateQrCodeService } from 'src/app/services/create-qr-code.service';
 
 @Component({
@@ -13,7 +13,8 @@ export class UserDataComponent implements OnInit {
  userCountry!: any;
  deviceType!: string;
   constructor(private route : ActivatedRoute,
-    private qrcodeService : CreateQrCodeService){
+    private qrcodeService : CreateQrCodeService,
+    public router  :Router){
    this.hashValue= this.route.snapshot.paramMap.get('hash')
   }
   ngOnInit(): void {
@@ -35,6 +36,9 @@ export class UserDataComponent implements OnInit {
       this.userCountry=data
       console.log(this.userCountry.country)
       this.qrcodeService.scanQR(this.userCountry.country,this.deviceType,5,this.browserInfo, this.hashValue).subscribe(res=>{
+        const url = res
+        console.log(url)
+        window.location.href=url
         console.log(res)
        },err=>{
         console.log(err)

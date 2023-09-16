@@ -15,10 +15,9 @@ export class QrCodeDetailsComponent implements OnInit {
       this.id = this.activatedRoute.snapshot.paramMap.get('id')
      }
   ngOnInit(): void {
-     this.qrcodeService.qrcodeDetails(this.id).subscribe(res=>{
+     this.qrcodeService.qrcodeDetails(this.id).subscribe((res : any)=>{
       this.Details=res
       console.log(this.Details)
      })
   }
-
 }
