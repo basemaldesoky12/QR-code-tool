@@ -1,5 +1,5 @@
 import { Component,Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CreateQrCodeService } from 'src/app/services/create-qr-code.service';
 import jwtDecode from 'jwt-decode';
@@ -15,9 +15,11 @@ export class EditQrCodeDialogComponent implements OnInit {
   public dialogRef : MatDialogRef<EditQrCodeDialogComponent>,
   private formBuilder : FormBuilder,
   private qrService : CreateQrCodeService){}
+  editError : boolean = false
+  errorMessage : string = ''
   ngOnInit(): void {
     this.editForm=this.formBuilder.group({
-      QRName : new FormControl('')
+      QRName :['',[Validators.required,     Validators.pattern('^[A-Za-z]{3,}(\\s?[A-Za-z]+)*$')]]
     })
   }
   closeDialog(){
@@ -31,6 +33,12 @@ export class EditQrCodeDialogComponent implements OnInit {
     this.qrService.editName(this.editForm.value,this.data.id,token,userId).subscribe(res=>{
       this.closeDialog()
       console.log(res)
+    },err=>{
+      if(err.status==401)
+      {
+         this.editError=true
+         this.errorMessage=err.error
+      }
     })
   }
 }

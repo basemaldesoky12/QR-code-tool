@@ -20,7 +20,19 @@
                     <div class="form-group p-3">
                         <input type="text" formControlName="QRName" class="form-control" id="qr-text" placeholder="Enter Name">
                     </div>
-                    <button  type="submit" class="btn btn-primary btn-block btn-generate mt-2" id="generate-btn">Submit</button>
+                    <div *ngIf="editForm.get('QRName')?.hasError('required')" class="text-danger">
+                        Name is required.
+                      </div>
+                      <!-- Show validation error message if QRName is less than 3 characters -->
+                      <div *ngIf="editForm.get('QRName')?.hasError('pattern')" class="text-danger">
+                        Name must be at least 3 characters without white spaces. 
+                      </div>
+
+                      <div *ngIf="editError" class="text-danger">
+                       {{errorMessage}}
+                      </div>
+
+                    <button [disabled]="editForm.invalid"  type="submit" class="btn btn-primary btn-block btn-generate mt-2" id="generate-btn">Submit</button>
                 </form>
             </div>
         </div>

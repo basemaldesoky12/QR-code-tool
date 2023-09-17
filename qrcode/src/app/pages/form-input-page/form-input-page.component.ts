@@ -21,7 +21,8 @@ export class FormInputPageComponent implements OnInit {
           Validators.required, // Required validation
           Validators.pattern('^(https?|ftp)://[\\w\\.-]+\\.[a-zA-Z]{2,4}(:\\d+)?(/\\S*)?$') // URL pattern validation
         ]],
-        QRName: ['',[Validators.required, Validators.minLength(3)]]
+        QRName: ['',[Validators.required,     Validators.pattern('^[A-Za-z]{3,}(\\s?[A-Za-z]+)*$')
+      ]]
       });
     }
   ngOnInit(): void {

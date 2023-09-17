@@ -14,15 +14,19 @@
                   </div>
   
                   <form  [formGroup]="signupForm" (ngSubmit)="signUp()">
-                    <p>Please login to your account</p>
+                    <p>Create your account</p>
   
                     <div class="form-outline mb-4">
                       <input type="text" formControlName="username"  class="form-control"
                         placeholder="Username"  />
                       <label class="form-label" for="form2Example11">Username</label>
                       <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched" class="text-danger">
-                        Username is required 
+                        Username is required  at least 3 characters
                     </div>
+                    <!-- <div *ngIf="signupForm.get('username')?.hasError('pattern')" class="text-danger">
+                     
+                    </div> -->
+                    
                     </div>
                     <div class="form-outline mb-4">
                         <input type="text" class="form-control"
@@ -37,9 +41,13 @@
                     <div class="form-outline mb-4">
                       <input type="password"  class="form-control" formControlName="password"  placeholder="Password" />
                       <label class="form-label" for="form2Example22">Password</label>
-                      <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-danger">
-                        Password is required and must be a valid password with minimum length of 6 characters.
+                      <!-- <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-danger">
+                        Password is required 
+                    </div> -->
+                    <div *ngIf="signupForm.get('password')?.hasError('pattern')" class="text-danger">
+                      Password must contain at least one Uppercase letter and one Lowercase letter and a number no special characters
                     </div>
+
                     </div>
                     <div class="form-outline mb-4">
                         <input type="password"  class="form-control" formControlName="ConfirmPassword"  placeholder=" ConfirmPassword" />

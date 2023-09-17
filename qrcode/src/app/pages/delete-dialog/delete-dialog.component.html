@@ -5,9 +5,12 @@
             <div class="content">
             <h2> Are You sure You Want To Delete This QR Code ? </h2>
             <div class="d-flex justify-content-center box">
-            <button class="btn btn-primary" (click)="DeleteQR()">Yes</button>
+            <button class="btn btn-danger" (click)="DeleteQR()">Yes</button>
             <button class="btn btn-primary" (click)="closeDialog()"> No</button>
-        </div>
+            </div>
+            <div *ngIf="deleteError" class="text-danger mt-2">
+                {{errorMessage}}
+            </div>
             </div>
         </div>
     </div>

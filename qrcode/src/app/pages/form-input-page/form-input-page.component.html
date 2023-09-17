@@ -22,15 +22,15 @@
                             Name is required.
                           </div>
                           <!-- Show validation error message if QRName is less than 3 characters -->
-                          <div *ngIf="qrCodeForm.get('QRName')?.hasError('minlength')" class="text-danger">
-                            Name must be at least 3 characters long.
+                          <div *ngIf="qrCodeForm.get('QRName')?.hasError('pattern')" class="text-danger">
+                            Name must be at least 3 characters without white spaces. 
                           </div>
                     </div>
-                    <button  type="submit" class="btn btn-primary btn-block btn-generate mt-2" id="generate-btn">Generate QR Code</button>
+                    <button [disabled]="qrCodeForm.invalid"  type="submit" class="btn btn-primary btn-block btn-generate mt-2" id="generate-btn">Generate QR Code</button>
                 </form>
-                <div class="text-center mt-3">
+                <!-- <div class="text-center mt-3">
                     <img src="" alt="Generated QR Code" id="qr-code-img" style="display: none;">
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

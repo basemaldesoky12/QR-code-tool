@@ -65,6 +65,6 @@ export class CreateQrCodeService {
       })    
       const userId = Number(userid)
       console.log(userid)
-   return this.http.delete(this.URL+`/api/QRCode/${qrId}`,{responseType : 'text', headers : headers , body : Number(userid)})
+   return this.http.delete(this.URL+`/api/QRCode/${qrId}/${userid}`,{responseType : 'text', headers : headers})
   }
 }

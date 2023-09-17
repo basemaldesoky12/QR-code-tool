@@ -8,6 +8,8 @@ import jwtDecode from 'jwt-decode';
   styleUrls: ['./delete-dialog.component.css']
 })
 export class DeleteDialogComponent implements OnInit {
+  deleteError : boolean = false
+  errorMessage : string =''
 constructor(
   @Inject(MAT_DIALOG_DATA) public data : any,
   public dialogRef : MatDialogRef<DeleteDialogComponent>,
@@ -28,7 +30,12 @@ constructor(
       console.log(res)
       this.closeDialog()
      },err=>{
-       console.log(err) 
+      console.log(err)
+       if(err.status==401)
+       {
+        this.deleteError=true
+        this.errorMessage=err.error
+       } 
      })
   }
 }
