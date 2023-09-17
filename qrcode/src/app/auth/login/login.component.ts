@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
       if(err.status==401)
       {
           this.loginError=true
-          this.errorMessage='please verify your account'
+          this.errorMessage=err.error
       }
       if(err.status==400)
       {
         this.loginError=true
-          this.errorMessage='invalid email orr password'
+          this.errorMessage=err.error
 
       }
     })
