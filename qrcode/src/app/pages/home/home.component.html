@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e7e4e4; " >
+<!-- <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e7e4e4; " >
   <div class="container">
       <a class="navbar-brand" routerLink="">QR Code Tool</a>
       <button class="navbar-toggler" (click)="toggleNavbar()">
@@ -15,11 +15,78 @@
           </ul>
       </div>
   </div>
-</nav>
+</nav> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container">
+      <!-- Navbar brand -->
+      <a class="navbar-brand me-2" href="https://mdbgo.com/">
+        <img
+          src="../../../assets/images/logo.png"
+          height="35"
+          alt="Eva Logo"
+          loading="lazy"
+          style="margin-top: -1px;"
+        />
+      </a>
+  
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+      <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/myqrcodes">Dashboard</a> 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"*ngIf="!isLoggedIn" routerLink="/auth/signup" >Sign Up</a>
+            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"*ngIf="!isLoggedIn" routerLink="/auth/login" > Login</a>
+            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" *ngIf="isLoggedIn" (click)="logout()" >Logout</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+  
+        <div class="d-flex align-items-center">
+         
+          <!-- <button type="button" class="btn btn-primary me-3">
+            Sign up for free
+          </button>
+          <a
+            class="btn btn-dark px-3"
+            href="https://github.com/mdbootstrap/mdb-ui-kit"
+            role="button"
+            ><i class="fab fa-github"></i
+          ></a> -->
+        </div>
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
 
-<div class=" d-flex h-100 text-center text-white " style="background-color: #e7e4e4;">
-    <div class="cover-container d-flex w-100 vh-100 p-3 mx-auto flex-column">
-        <main>
+
+<div class=" d-flex  text-center text-white" style="background-color: #e7e4e4; height: 100vh;" style="row-gap: 50px;">
+    <div class="cover-container d-flex w-100 vh-110 p-3 mx-auto flex-column align-items-center" >
+        <main >
+          <img src="../../../assets/images/3bHf.gif" style="width: 200px;" class="p-3" alt="">
             <h1>Welcome To Our QR Code Tool.</h1>
             <p class="lead">Unlock the world with QR Code Magic - Seamlessly connect information in a snap! Generate with ease using our powerful QR code tool</p>
             <p class="lead box">

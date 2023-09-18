@@ -19,6 +19,7 @@ import {MatFormFieldModule} from '@angular/material/form-field'
 import {FormsModule} from '@angular/forms';
 import { EditQrCodeDialogComponent } from './pages/edit-qr-code-dialog/edit-qr-code-dialog.component';
 import { DeleteDialogComponent } from './pages/delete-dialog/delete-dialog.component'
+import { NgxPaginationModule } from 'ngx-pagination';
 // import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
@@ -43,7 +44,8 @@ import { DeleteDialogComponent } from './pages/delete-dialog/delete-dialog.compo
     MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

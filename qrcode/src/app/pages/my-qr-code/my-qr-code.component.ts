@@ -14,6 +14,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class MyQrCodeComponent implements OnInit {
   QRCodes : any
   hashValue : any
+  itemsPerPage =4
+  p =1
  constructor(private qrcodeService : CreateQrCodeService,private route : Router,public dialog : MatDialog, private authService : AuthService){}
   ngOnInit(): void {
 

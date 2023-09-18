@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe(res=>{
       let token = res
       localStorage.setItem('token',token)
+      this.authService.setLoggedIn(true)
       // console.log(res)
       this.route.navigate(['myqrcodes'])
     },err=>{
